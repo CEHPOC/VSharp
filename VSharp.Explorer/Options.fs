@@ -12,6 +12,7 @@ type searchMode =
     | ExecutionTreeMode
     | FairMode of searchMode
     | InterleavedMode of searchMode * int * searchMode * int
+    | GuidedMode
 
 type coverageZone =
     | MethodZone

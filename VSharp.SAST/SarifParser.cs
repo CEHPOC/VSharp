@@ -11,7 +11,7 @@ public class SarifParser
         SarifList = new List<SarifLoc>();
     }
     
-    public List<SarifLoc> GetLocationsFromSarif(string sarifname)
+    public List<SarifLoc> GetLocationsFromSarif(string workDir,string sarifname)
     {
         SarifLog log = SarifLog.Load(sarifname);
         foreach (Run r in log.Runs)
@@ -22,8 +22,7 @@ public class SarifParser
                     result.RuleId,
                     result.Locations[0].PhysicalLocation.Region.StartLine,
                     result.Locations[0].PhysicalLocation.Region.StartColumn,
-                    result.Message.Text,
-                    result.Locations[0].PhysicalLocation.ArtifactLocation.Uri
+                    new Uri(workDir+result.Locations[0].PhysicalLocation.ArtifactLocation.Uri.ToString())
                     );
                 
                 SarifList.Add(loc);

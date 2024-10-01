@@ -279,6 +279,7 @@ namespace VSharp
                 SearchStrategy.ExecutionTree => searchMode.ExecutionTreeMode,
                 SearchStrategy.ExecutionTreeContributedCoverage => searchMode.NewInterleavedMode(searchMode.ExecutionTreeMode, 1, searchMode.ContributedCoverageMode, 1),
                 SearchStrategy.Interleaved => searchMode.NewInterleavedMode(searchMode.ShortestDistanceBasedMode, 1, searchMode.ContributedCoverageMode, 9),
+                SearchStrategy.Guided => searchMode.GuidedMode,
                 _ => throw new UnreachableException("Unknown search strategy")
             };
         }

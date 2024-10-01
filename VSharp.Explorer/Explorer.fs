@@ -13,6 +13,7 @@ open VSharp.Interpreter.IL
 open CilState
 open VSharp.Explorer
 open VSharp.Solver
+open VSharp.SAST
 
 type IReporter =
     abstract member ReportFinished: UnitTest -> unit
@@ -44,6 +45,8 @@ type private IExplorer =
 type private SVMExplorer(explorationOptions: ExplorationOptions, statistics: SVMStatistics, reporter: IReporter) =
 
     let options = explorationOptions.svmOptions
+    
+    let target = Programm.rules
 
     let hasTimeout = explorationOptions.timeout.TotalMilliseconds > 0
 
@@ -103,7 +106,9 @@ type private SVMExplorer(explorationOptions: ExplorationOptions, statistics: SVM
             FairSearcher((fun _ -> mkForwardSearcher baseMode), uint branchReleaseTimeout, statistics) :> IForwardSearcher
         | InterleavedMode(base1, stepCount1, base2, stepCount2) ->
             InterleavedSearcher([mkForwardSearcher base1, stepCount1; mkForwardSearcher base2, stepCount2]) :> IForwardSearcher
-
+        | GuidedMode -> //GuidedSearcher(mkForwardSearcher DFSMode, ConstantTargetManager(Some(target),options.recThreshold)) :> IForwardSearcher
+            ComposeTargetSearcher(target) :> IForwardSearcher
+    
     let mutable searcher : IBidirectionalSearcher =
         match options.explorationMode with
         | TestCoverageMode(_, searchMode) ->
@@ -420,6 +425,10 @@ type private SVMExplorer(explorationOptions: ExplorationOptions, statistics: SVM
                         interpreter.ConfigureErrorReporter reportError reportFatalError
                         let isolatedInitialStates = isolated |> List.collect x.FormIsolatedInitialStates
                         let entryPointsInitialStates = entryPoints |> List.collect x.FormEntryPointInitialStates
+                        for t in target.Keys do
+                            List.iter (fun (s:cilState) -> s.AddTarget(t) |> ignore) isolatedInitialStates
+                            List.iter (fun (s:cilState) -> s.AddTarget(t) |> ignore) entryPointsInitialStates
+                                               
                         let iieStates, initialStates =
                             isolatedInitialStates @ entryPointsInitialStates
                             |> List.partition (fun state -> state.IsIIEState)

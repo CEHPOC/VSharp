@@ -36,6 +36,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "VSharp.CoverageTool", "VSha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSharp.SAST", "VSharp.SAST\VSharp.SAST.csproj", "{DFFA0BF9-EE8A-4AA2-9F2D-3CFB7FD3C167}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSharp.SASTLoader", "VSharp.SASTLoader\VSharp.SASTLoader.csproj", "{09EE8C97-1C68-4DA6-9084-C8D85DA9BBD6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -151,5 +153,11 @@ Global
 		{DFFA0BF9-EE8A-4AA2-9F2D-3CFB7FD3C167}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DFFA0BF9-EE8A-4AA2-9F2D-3CFB7FD3C167}.DebugTailRec|Any CPU.ActiveCfg = Debug|Any CPU
 		{DFFA0BF9-EE8A-4AA2-9F2D-3CFB7FD3C167}.DebugTailRec|Any CPU.Build.0 = Debug|Any CPU
+		{09EE8C97-1C68-4DA6-9084-C8D85DA9BBD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09EE8C97-1C68-4DA6-9084-C8D85DA9BBD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09EE8C97-1C68-4DA6-9084-C8D85DA9BBD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09EE8C97-1C68-4DA6-9084-C8D85DA9BBD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09EE8C97-1C68-4DA6-9084-C8D85DA9BBD6}.DebugTailRec|Any CPU.ActiveCfg = Debug|Any CPU
+		{09EE8C97-1C68-4DA6-9084-C8D85DA9BBD6}.DebugTailRec|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

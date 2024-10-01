@@ -38,6 +38,7 @@
     <ItemGroup>
       <ProjectReference Include="..\VSharp.IL\VSharp.IL.fsproj" />
       <ProjectReference Include="..\VSharp.InternalCalls\VSharp.InternalCalls.fsproj" />
+      <ProjectReference Include="..\VSharp.SAST\VSharp.SAST.csproj" />
       <ProjectReference Include="..\VSharp.SILI\VSharp.SILI.fsproj" />
       <ProjectReference Include="..\VSharp.Solver\VSharp.Solver.fsproj" />
       <ProjectReference Include="..\VSharp.TestGenerator\VSharp.TestGenerator.fsproj" />

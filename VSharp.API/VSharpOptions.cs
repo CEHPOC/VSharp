@@ -38,7 +38,8 @@ public enum SearchStrategy
     /// <summary>
     /// Interleaves <see cref="ShortestDistance"/> and <see cref="ContributedCoverage"/> strategies.
     /// </summary>
-    Interleaved
+    Interleaved,
+    Guided
 }
 
 /// <summary>

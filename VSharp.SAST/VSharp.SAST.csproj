@@ -8,18 +8,16 @@
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
         <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
     </PropertyGroup>
-
-    <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    </ItemGroup>
     
     <ItemGroup>
+      <PackageReference Include="Mono.Cecil" Version="0.11.5" />
       <PackageReference Include="Sarif.Sdk" Version="4.5.4" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\VSharp.CSharpUtils\VSharp.CSharpUtils.csproj" />
       <ProjectReference Include="..\VSharp.IL\VSharp.IL.fsproj" />
+      <ProjectReference Include="..\VSharp.Utils\VSharp.Utils.fsproj" />
     </ItemGroup>
 
 </Project>
