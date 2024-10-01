@@ -129,11 +129,7 @@ type ComposeTargetSearcher(targets: Dictionary<codeLocation,string>) =
             
     interface IForwardSearcher with
         override x.Init states = init states
-        override x.Pick() =
-            let a = pick None
-            printfn "%s %s" (a.Value.CurrentLoc.offset.ToString()) (a.Value.CurrentLoc.method.FullName)
-            a
-            
+        override x.Pick() = pick None
         override x.Pick selector = pick (Some selector)
         override x.Update (parent, newStates) = update parent newStates
         override x.States() = Seq.empty

@@ -46,7 +46,7 @@ type private SVMExplorer(explorationOptions: ExplorationOptions, statistics: SVM
 
     let options = explorationOptions.svmOptions
     
-    let target = Programm.rules
+    let target = Converter.rules
 
     let hasTimeout = explorationOptions.timeout.TotalMilliseconds > 0
 

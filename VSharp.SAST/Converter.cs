@@ -4,10 +4,10 @@ using VSharp;
 
 namespace VSharp.SAST
 {
-    public static class Programm
+    public static class Converter
     {
         public static Dictionary<codeLocation,string> rules;
-        public static (HashSet<MethodBase>, Dictionary<codeLocation, string>) Func(string[] args)
+        public static (HashSet<MethodBase>, Dictionary<codeLocation, string>) RunAndConvert(string[] args)
         {
             string projectpath = args[0];
             string slnname;
@@ -18,20 +18,15 @@ namespace VSharp.SAST
             string path2 = projectpath;
             string path3 = projectpath + "sast-results.sarif";
 
-            //var publishRunner = new PublishRunner(path2);
-            //publishRunner.run();
+            var publishRunner = new PublishRunner(path2);
+            publishRunner.run();
 
-            //var runner = new SecurityCodeScan(path1, path2);
-            //runner.run();
+            var runner = new SecurityCodeScan(path1, path2);
+            runner.run();
 
             SarifParser sarifpars = new SarifParser();
             List<SarifLoc> list = sarifpars.GetLocationsFromSarif(path2, path3);
-                /*
-            foreach (var x in list)
-            {
-                Console.WriteLine($"{x.RuleId} {x.Startrow} {x.Startcolumn} {x.Filelocation}");
-            }
-            */
+            
             //А можно ли без win-x64?
             string dllpath = projectpath + slnname + "\\bin\\Release\\net7.0\\win-x64\\publish\\" + slnname + ".dll";
             
